@@ -1,0 +1,151 @@
+﻿<Window x:Class="Medisch_dossier_programma.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medisch_dossier_programma.View"
+        DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=MainWindowViewModel}"
+        mc:Ignorable="d"
+        Title="Medisch Dossier Programma" Height="720" Width="800"
+        Background="{StaticResource backgroundImage}"
+        Window.Icon="../Images/icon1.ico">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="Converter" />
+    </Window.Resources>
+
+    <DockPanel>
+    
+    <Menu DockPanel.Dock="Top" Height="28" Visibility="{Binding Path=ShowMenu, Converter={StaticResource Converter}}">
+            <MenuItem Header="Accounts" Margin="0,5,5,0" Command="{Binding AccountsCommand}"/>
+            <MenuItem Header="VaccinatieLijst" Margin="0,5,5,0" Command="{Binding VaccinatieLijstCommand}"/>
+    </Menu>
+    
+    <Grid>
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ListView Margin="20" ItemsSource="{Binding Studenten}" 
+                  SelectedItem="{Binding SelectedStudent}" Width="280" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding }" FontSize="14"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid Grid.Column="1" Margin="49">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" ></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Style="{StaticResource textBlockBackground}" Text="Achternaam:" FontWeight="Bold">
+                <TextBlock.Background>
+                    <SolidColorBrush Color="WhiteSmoke" Opacity="0.7">
+                    </SolidColorBrush>
+                </TextBlock.Background>
+            </TextBlock>
+            <TextBlock Grid.Row="1" Style="{StaticResource textBlockBackground}" Text="Voornaam:" FontWeight="Bold">
+                <TextBlock.Background>
+                    <SolidColorBrush Color="WhiteSmoke" Opacity="0.7">
+                    </SolidColorBrush>
+                </TextBlock.Background>
+            </TextBlock>
+            <TextBlock Grid.Row="2" Style="{StaticResource textBlockBackground}" Text="Klas:" FontWeight="Bold">
+                <TextBlock.Background>
+                    <SolidColorBrush Color="WhiteSmoke" Opacity="0.7">
+                    </SolidColorBrush>
+                </TextBlock.Background>
+            </TextBlock>
+            <TextBlock Grid.Row="3" Style="{StaticResource textBlockBackground}" Text="Geboortedatum:" FontWeight="Bold">
+                <TextBlock.Background>
+                    <SolidColorBrush Color="WhiteSmoke" Opacity="0.7">
+                    </SolidColorBrush>
+                </TextBlock.Background>
+            </TextBlock>
+            <TextBlock Grid.Row="4" Style="{StaticResource textBlockBackground}" Text="Geslacht:" FontWeight="Bold">
+                <TextBlock.Background>
+                    <SolidColorBrush Color="WhiteSmoke" Opacity="0.7">
+                    </SolidColorBrush>
+                </TextBlock.Background>
+            </TextBlock>
+            <TextBlock Grid.Row="5" Style="{StaticResource textBlockBackground}" Text="Telefoonnummer:" FontWeight="Bold">
+                <TextBlock.Background>
+                    <SolidColorBrush Color="WhiteSmoke" Opacity="0.7">
+                    </SolidColorBrush>
+                </TextBlock.Background>
+            </TextBlock>
+            <TextBlock Grid.Row="6" Style="{StaticResource textBlockBackground}" Text="EmailAdres:" FontWeight="Bold">
+                <TextBlock.Background>
+                    <SolidColorBrush Color="WhiteSmoke" Opacity="0.7">
+                    </SolidColorBrush>
+                </TextBlock.Background>
+            </TextBlock>
+
+            <TextBlock Grid.Row="0" Style="{StaticResource textBlockBackground}" Grid.Column="1" Text="{Binding SelectedStudent.Achternaam}">
+                <TextBlock.Background>
+                    <SolidColorBrush Color="WhiteSmoke" Opacity="0.7">
+                    </SolidColorBrush>
+                </TextBlock.Background>
+            </TextBlock>
+            <TextBlock Grid.Row="1" Style="{StaticResource textBlockBackground}" Grid.Column="1" Text="{Binding SelectedStudent.Voornaam}">
+                <TextBlock.Background>
+                    <SolidColorBrush Color="WhiteSmoke" Opacity="0.7">
+                    </SolidColorBrush>
+                </TextBlock.Background>
+            </TextBlock>
+            <TextBlock Grid.Row="2" Style="{StaticResource textBlockBackground}" Grid.Column="1" Text="{Binding SelectedStudent.Klas}">
+                <TextBlock.Background>
+                    <SolidColorBrush Color="WhiteSmoke" Opacity="0.7">
+                    </SolidColorBrush>
+                </TextBlock.Background>
+            </TextBlock>
+            <TextBlock Grid.Row="3" Style="{StaticResource textBlockBackground}" Grid.Column="1" Text="{Binding SelectedStudent.Geboortedatum, StringFormat={}{0:dd-MM-yyyy}}">
+                <TextBlock.Background>
+                    <SolidColorBrush Color="WhiteSmoke" Opacity="0.7">
+                    </SolidColorBrush>
+                </TextBlock.Background>
+            </TextBlock>
+            <TextBlock Grid.Row="4" Style="{StaticResource textBlockBackground}" Grid.Column="1" Text="{Binding SelectedStudent.Geslacht}">
+                <TextBlock.Background>
+                    <SolidColorBrush Color="WhiteSmoke" Opacity="0.7">
+                    </SolidColorBrush>
+                </TextBlock.Background>
+            </TextBlock>
+            <TextBlock Grid.Row="5" Style="{StaticResource textBlockBackground}" Grid.Column="1" Text="{Binding SelectedStudent.TelefoonNummer}">
+                <TextBlock.Background>
+                    <SolidColorBrush Color="WhiteSmoke" Opacity="0.7">
+                    </SolidColorBrush>
+                </TextBlock.Background>
+            </TextBlock>
+            <TextBlock Grid.Row="6" Style="{StaticResource textBlockBackground}" Grid.Column="1" Text="{Binding SelectedStudent.EmailAdres}">
+                <TextBlock.Background>
+                    <SolidColorBrush Color="WhiteSmoke" Opacity="0.7">
+                    </SolidColorBrush>
+                </TextBlock.Background>
+            </TextBlock>
+
+            <Button Grid.Row="7" Style="{StaticResource Button}" Content="Wijzig" Margin="0,0,10,10"  Command="{Binding WijzigenCommand}"/>
+            <Button Grid.Row="8" Style="{StaticResource Button}" Content="Verwijder" Margin="0,0,10,10"  Command="{Binding VerwijderenCommand}"/>
+            <Button Grid.Row="10" Style="{StaticResource Button}" Content="Vaccinaties" Margin="0,41,10,-31"  Command="{Binding VaccinatieCommand}"/>
+            <Button Grid.Row="10" Style="{StaticResource Button}" Content="Toevoegen" Margin="0,0,10,10"  Command="{Binding ToevoegenCommand}"/>
+
+        </Grid>
+    </Grid>
+</DockPanel>
+</Window>
